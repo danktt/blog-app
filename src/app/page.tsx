@@ -30,7 +30,7 @@ export default function Home() {
           />
         </p>
         <div className="mt-4 flex justify-center gap-5 ">
-          <button className="h-10 w-40 rounded-xl border border-transparent bg-black text-sm text-white dark:border-white">
+          <button className="h-10 w-40 rounded-xl border border-transparent bg-white text-sm text-black dark:border-white">
             About me
           </button>
         
