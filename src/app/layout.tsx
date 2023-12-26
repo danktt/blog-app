@@ -16,6 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <meta http-equiv="Permissions-Policy" content="interest-cohort=()"></meta>
       <body className={inter.className}>{children}</body>
     </html>
   );
