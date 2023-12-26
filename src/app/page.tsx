@@ -1,15 +1,12 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/utils/cn";
+import dynamic from 'next/dynamic';
 
 import { BackgroundBeams } from "@/components/BackgroundBeams";
 import { Spotlight } from "@/components/Spotlight/indext";
-import dynamic from 'next/dynamic';
-import { DotBackground } from "@/components/DotBackground";
 import { ChevronRight } from "lucide-react";
 
-// const DynamicTextGenerateEffect = dynamic(() => import('@/components/TextGenerateEffect'),{ssr: false});
 const DynamicTextGenerateEffect = dynamic(() => import('@/components/TextGenerateEffect').then(mod => mod.TextGenerateEffect), {ssr: false});
 
 export default function Home() {
@@ -23,7 +20,7 @@ export default function Home() {
       />
       <div className=" relative z-10  mx-auto w-full max-w-7xl  p-4 pt-20 md:pt-0">
         <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text pb-2 text-center text-4xl font-bold text-transparent md:text-7xl">
-          Greetings, I&apos;m Danilo 👋
+          Greetings, I&apos;m Danilo 
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-center text-base font-normal text-neutral-300">
           <DynamicTextGenerateEffect
@@ -43,6 +40,8 @@ export default function Home() {
   My blog  <ChevronRight size='22px' className="transition-transform duration-500 group-hover:translate-x-1" />
   </span>
 </button>
+
+
         </div>
       </div>
       <BackgroundBeams />
@@ -51,14 +50,3 @@ export default function Home() {
   );
 }
 
-// import { LampEffect } from "@/components/LampEffect";
-// import { Spotlight } from "@/components/Spotlight";
-
-// export default function Home() {
-//   return (
-//     <div>
-//       <LampEffect title="I'm a Software Engeenier" />
-//       <Spotlight />
-//     </div>
-//   );
-// }
