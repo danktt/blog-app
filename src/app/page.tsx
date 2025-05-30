@@ -63,7 +63,7 @@ export default function Home() {
                 </h1>
                 <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
                   <p>
-                    a Full-Stack Developer specialized in React, Next.js, and
+                    A Full-Stack Developer specialized in React, Next.js, and
                     Go, with a background that blends hands-on experience in
                     software engineering, networks, and IT infrastructure.
                   </p>
