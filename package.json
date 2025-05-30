@@ -11,6 +11,7 @@
     "lint:fix": "biome lint --fix"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "@tabler/icons-react": "^3.33.0",
     "class-variance-authority": "^0.7.1",
