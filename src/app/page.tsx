@@ -30,8 +30,8 @@ export default function Home() {
     },
     {
       icon: <Mail />,
-      label: 'danilo.mirandaa.15@outlook.com',
-      href: 'mailto:danilo.mirandaa.15@outlook.com',
+      label: 'danilomirandaa.15@outlook.com',
+      href: 'mailto:danilomirandaa.15@outlook.com',
       external: false,
       isEmail: true,
     },
