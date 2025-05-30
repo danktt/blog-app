@@ -1,7 +1,11 @@
+import { TextHoverEffect } from '@/components/ui/text-hover-effect';
+
 export default function ExperienceError() {
   return (
     <div className="flex h-screen items-center justify-center">
-      <h1 className="font-normal text-2xl"> Coming Soon</h1>
+      <div className="flex flex-col items-center justify-center">
+        <TextHoverEffect text="Coming Soon!" />
+      </div>
     </div>
   );
 }
