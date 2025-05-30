@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   motion,
   useTransform,
   useScroll,
   useVelocity,
   useSpring,
-} from "framer-motion";
-import { cn } from "@/utils/cn";
+} from 'framer-motion';
+import { cn } from '@/utils/cn';
 
 export const TracingBeam = ({
   children,
@@ -54,9 +54,9 @@ export const TracingBeam = ({
 
   return (
     <motion.div
-      className={cn("relative mx-auto h-full w-full max-w-4xl", className)}
+      className={cn('relative mx-auto h-full w-full max-w-4xl', className)}
     >
-      <div className="absolute -left-20 top-3">
+      <div className="-left-20 absolute top-3">
         <motion.div
           transition={{
             duration: 0.2,
@@ -65,10 +65,10 @@ export const TracingBeam = ({
           animate={{
             boxShadow:
               scrollYProgress.get() > 0
-                ? "none"
-                : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                ? 'none'
+                : 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
           }}
-          className="border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm"
+          className="ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border border-netural-200 shadow-sm"
         >
           <motion.div
             transition={{
@@ -77,9 +77,9 @@ export const TracingBeam = ({
             }}
             animate={{
               backgroundColor:
-                scrollYProgress.get() > 0 ? "white" : "var(--emerald-500)",
+                scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-500)',
               borderColor:
-                scrollYProgress.get() > 0 ? "white" : "var(--emerald-600)",
+                scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-600)',
             }}
             className="h-2 w-2 rounded-full border border-neutral-300 bg-white"
           />

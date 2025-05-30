@@ -1,21 +1,21 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require('tailwindcss/defaultTheme');
 
-const svgToDataUri = require("mini-svg-data-uri");
+const svgToDataUri = require('mini-svg-data-uri');
 
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors');
 const {
   default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+} = require('tailwindcss/lib/util/flattenColorPalette');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
-  darkMode: "class",
+  content: ['./src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     // rest of the code
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
+    require('@tailwindcss/aspect-ratio'),
     addVariablesForColors,
     // function ({ matchUtilities, theme }: any) {
     //   matchUtilities(
@@ -43,12 +43,12 @@ module.exports = {
 };
 
 function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  const allColors = flattenColorPalette(theme('colors'));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
   );
 
   addBase({
-    ":root": newVars,
+    ':root': newVars,
   });
 }

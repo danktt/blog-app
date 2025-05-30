@@ -1,16 +1,11 @@
-"use client";
-import React from "react";
+'use client';
 // import { calsans } from "@/fonts/calsans";
-import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import { TracingBeam } from "@/components/TracingBeam";
-import { DotBackground } from "@/components/DotBackground";
+import Image from 'next/image';
+import { TracingBeam } from '@/components/TracingBeam';
 
 export default function Post() {
   return (
-    
     <TracingBeam className="">
-
       <div className="relative mx-auto max-w-2xl pt-4 antialiased">
         {dummyContent.map((item, index) => (
           <div key={`content-${index}`} className="mb-10">
@@ -18,18 +13,18 @@ export default function Post() {
               {item.badge}
             </h2>
 
-            <p className={"mb-4 text-xl"}>{item.title}</p>
+            <p className={'mb-4 text-xl'}>{item.title}</p>
 
-            <div className="prose  prose-sm dark:prose-invert text-sm">
+            <div className="prose prose-sm dark:prose-invert text-sm">
               {item?.image && (
                 <Image
-                src={item.image}
-                alt="blog thumbnail"
-                height="1000"
-                width="1000"
-                className="mb-10 rounded-lg object-cover"
+                  src={item.image}
+                  alt="blog thumbnail"
+                  height="1000"
+                  width="1000"
+                  className="mb-10 rounded-lg object-cover"
                 />
-                )}
+              )}
               {item.description}
             </div>
           </div>
@@ -41,7 +36,7 @@ export default function Post() {
 
 const dummyContent = [
   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+    title: 'Lorem Ipsum Dolor Sit Amet',
     description: (
       <>
         <p>
@@ -69,12 +64,12 @@ const dummyContent = [
         </p>
       </>
     ),
-    badge: "React",
+    badge: 'React',
     image:
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+    title: 'Lorem Ipsum Dolor Sit Amet',
     description: (
       <>
         <p>
@@ -93,12 +88,12 @@ const dummyContent = [
         </p>
       </>
     ),
-    badge: "Changelog",
+    badge: 'Changelog',
     image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    title: "Lorem Ipsum Dolor Sit Amet",
+    title: 'Lorem Ipsum Dolor Sit Amet',
     description: (
       <>
         <p>
@@ -111,8 +106,8 @@ const dummyContent = [
         </p>
       </>
     ),
-    badge: "Launch Week",
+    badge: 'Launch Week',
     image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ];
