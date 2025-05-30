@@ -1,7 +1,7 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
@@ -17,6 +17,26 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const { setTheme, theme } = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const activeTabRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const activeTab = TABS.find((tab) => tab.href === pathname);
+
+    if (container && activeTab) {
+      const activeTabElement = activeTabRef.current;
+
+      if (activeTabElement) {
+        const { offsetLeft, offsetWidth } = activeTabElement;
+        const clipLeft = offsetLeft;
+        const clipRight = offsetLeft + offsetWidth;
+
+        container.style.clipPath = `inset(0 ${Number(100 - (clipRight / container.offsetWidth) * 100).toFixed()}% 0 ${Number((clipLeft / container.offsetWidth) * 100).toFixed()}% )`;
+      }
+    }
+  }, [pathname]);
+
   const handleNavigation = (href: string) => {
     router.push(href);
     setIsMobileMenuOpen(false);
@@ -107,25 +127,42 @@ export function Navbar() {
                     </div>
 
                     <nav className="pointer-events-auto hidden md:block">
-                      <ul className="flex cursor-pointer rounded-full bg-white/90 px-3 font-medium text-sm text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-                        {TABS.map((item) => (
-                          <li key={item.label}>
-                            <Link
-                              href={item.href}
-                              className={`relative block px-3 py-2 transition ${
-                                pathname === item.href
-                                  ? 'text-[#FF5A1F] dark:text-[#FF5A1F]'
-                                  : 'hover:text-[#FF5A1F] dark:hover:text-[#FF5A1F]'
-                              }`}
+                      <div className="relative">
+                        <div
+                          ref={containerRef}
+                          className="absolute z-10 w-full overflow-hidden [clip-path:inset(0px_75%_0px_0%_round_17px)] [transition:clip-path_0.25s_ease]"
+                        >
+                          <div className="relative mt-8 flex h-0.5 w-full justify-center bg-[#FF5A1F]">
+                            {TABS.map((tab) => (
+                              <div
+                                key={tab.label}
+                                className="flex h-8 items-center p-3 font-medium text-sm text-white dark:text-black"
+                              >
+                                {tab.label}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <ul className="flex cursor-pointer rounded-full bg-white/90 px-3 font-medium text-sm text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+                          {TABS.map((item) => (
+                            <li
+                              key={item.label}
+                              ref={pathname === item.href ? activeTabRef : null}
                             >
-                              {item.label}
-                              {pathname === item.href && (
-                                <span className="-bottom-px absolute inset-x-1 h-px bg-gradient-to-r from-[#FF5A1F]/0 via-[#FF5A1F]/40 to-[#FF5A1F]/0 dark:from-[#FF5A1F]/0 dark:via-[#FF5A1F]/40 dark:to-[#FF5A1F]/0" />
-                              )}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                              <Link
+                                href={item.href}
+                                className={`relative block px-3 py-2 transition ${
+                                  pathname === item.href
+                                    ? 'text-[#FF5A1F] dark:text-[#FF5A1F]'
+                                    : 'hover:text-[#FF5A1F] dark:hover:text-[#FF5A1F]'
+                                }`}
+                              >
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </nav>
                   </div>
 

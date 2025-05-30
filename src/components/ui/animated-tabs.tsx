@@ -44,10 +44,10 @@ export function AnimatedTabs() {
     <div className="relative mx-auto flex w-fit flex-col items-center">
       <div
         ref={containerRef}
-        className="absolute z-10 w-full overflow-hidden [clip-path:inset(0px_75%_0px_0%_round_17px)] [transition:clip-path_0.25s_ease]"
+        className="absolute z-10 w-full overflow-hidden [clip-path:inset(0px_75%_0px_0%_round_1px)] [transition:clip-path_0.25s_ease]"
       >
         <div className="relative mt-8 flex h-0.5 w-full justify-center bg-[#FF5A1F]">
-          {TABS.map((tab, index) => (
+          {TABS.map((tab) => (
             <button
               key={tab.label}
               onClick={() => handleTabClick(tab.label, tab.href)}
@@ -61,7 +61,7 @@ export function AnimatedTabs() {
         </div>
       </div>
       <div className="relative flex w-full justify-center">
-        {TABS.map(({ label, href }, index) => {
+        {TABS.map(({ label, href }) => {
           const isActive = activeTab === label;
 
           return (
