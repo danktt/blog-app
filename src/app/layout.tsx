@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Navbar } from '@/components/ui/navbar';
+
 import { ThemeProvider } from '@/components/theme-provider';
+import { Navbar } from '@/components/ui/navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+      <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

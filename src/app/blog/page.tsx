@@ -1,7 +1,7 @@
 'use client';
 // import { calsans } from "@/fonts/calsans";
 import Image from 'next/image';
-import { TracingBeam } from '@/components/TracingBeam';
+import { TracingBeam } from '../../components/TracingBeam';
 
 export default function Post() {
   return (

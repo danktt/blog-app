@@ -1,4 +1,4 @@
-import { TextHoverEffect } from '@/components/ui/text-hover-effect';
+import { TextHoverEffect } from '../../components/ui/text-hover-effect';
 
 export default function ExperienceError() {
   return (

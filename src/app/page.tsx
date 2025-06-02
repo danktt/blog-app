@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   IconBrandInstagram,
   IconBrandLinkedin,
@@ -38,26 +39,40 @@ export default function Home() {
   ];
 
   return (
-    <div className="mt-16 sm:mt-32 sm:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="mt-16 bg-background sm:mt-32 sm:px-8"
+    >
       <div className="mx-auto w-full max-w-7xl lg:px-8">
         <div className="relative px-4 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl lg:max-w-5xl">
             <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-              {/* Foto de perfil */}
-              <div className="flex justify-center lg:justify-start lg:pl-20">
-                <div className="max-w-xs px-2.5 lg:max-w-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex justify-center lg:justify-start lg:pl-20"
+              >
+                <div className="max-w-xs lg:max-w-none">
                   <Image
                     src="/profile.jpg"
                     alt="Danilo Miranda"
                     width={400}
                     height={300}
-                    className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                    className="aspect-square rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
                     priority
                   />
                 </div>
-              </div>
+              </motion.div>
               {/* Conteúdo principal */}
-              <div className="lg:order-first lg:row-span-2">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="lg:order-first lg:row-span-2"
+              >
                 <h1 className="font-bold text-4xl text-zinc-800 tracking-tight sm:text-5xl dark:text-zinc-100">
                   I'm Danilo Miranda
                 </h1>
@@ -95,9 +110,13 @@ export default function Home() {
                     actually solves a problem.
                   </p>
                 </div>
-              </div>
-              {/* Links sociais */}
-              <div className="lg:pl-20">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="lg:pl-20"
+              >
                 <ul>
                   {socialLinks.map((link, idx) => (
                     <li
@@ -132,11 +151,11 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
