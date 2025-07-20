@@ -1,36 +1,68 @@
 'use client';
-// import { calsans } from "@/fonts/calsans";
 import Image from 'next/image';
-import { TracingBeam } from '../../components/TracingBeam';
+import { motion } from 'framer-motion';
 
 export default function Post() {
   return (
-    <TracingBeam className="">
-      <div className="relative mx-auto max-w-2xl pt-4 antialiased">
-        {dummyContent.map((item, index) => (
-          <div key={`content-${index}`} className="mb-10">
-            <h2 className="mb-4 w-fit rounded-full bg-black px-4 py-1 text-sm text-white">
-              {item.badge}
-            </h2>
+    <div className="relative w-full overflow-hidden antialiased">
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        {/* Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 text-center"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Blog
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Thoughts, insights, and discoveries from my journey in technology and development.
+          </p>
+        </motion.div>
 
-            <p className={'mb-4 text-xl'}>{item.title}</p>
+        {/* Blog Content */}
+        <div className="relative mx-auto max-w-4xl">
+          {dummyContent.map((item, index) => (
+            <motion.div
+              key={`content-${index}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="mb-16 group"
+            >
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300">
+                <div className="mb-6">
+                  <span className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-sm font-medium text-white">
+                    {item.badge}
+                  </span>
+                </div>
 
-            <div className="prose prose-sm dark:prose-invert text-sm">
-              {item?.image && (
-                <Image
-                  src={item.image}
-                  alt="blog thumbnail"
-                  height="1000"
-                  width="1000"
-                  className="mb-10 rounded-lg object-cover"
-                />
-              )}
-              {item.description}
-            </div>
-          </div>
-        ))}
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-300">
+                  {item.title}
+                </h2>
+
+                {item?.image && (
+                  <div className="mb-8 overflow-hidden rounded-xl">
+                    <Image
+                      src={item.image}
+                      alt="blog thumbnail"
+                      height="1000"
+                      width="1000"
+                      className="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+
+                <div className="prose prose-sm dark:prose-invert text-gray-300 leading-relaxed">
+                  {item.description}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </TracingBeam>
+    </div>
   );
 }
 

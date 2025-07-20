@@ -4,6 +4,7 @@ import './globals.css';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/ui/navbar';
+import { BackgroundEffects } from '@/components/ui/background-effects';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <meta httpEquiv="Permissions-Policy" content="interest-cohort=()" />
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gradient-to-br from-black via-gray-900 to-black min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -28,7 +29,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <main className="relative z-10 pt-24 pb-8">
+            <div className="mx-auto w-full max-w-7xl px-6">
+              {children}
+            </div>
+          </main>
         </ThemeProvider>
       </body>
     </html>

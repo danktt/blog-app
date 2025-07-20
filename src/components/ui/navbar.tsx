@@ -79,9 +79,7 @@ export function Navbar() {
                   priority
                 />
               </div>
-              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Danilo
-              </span>
+              
             </Link>
           </motion.div>
 
@@ -126,7 +124,6 @@ export function Navbar() {
 
           {/* Right side - Theme toggle and mobile menu */}
           <div className="flex items-center space-x-2">
-            {/* Theme toggle */}
             <button
               type="button"
               aria-label="Toggle theme"
@@ -155,10 +152,10 @@ export function Navbar() {
               )}
             </button>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors duration-200 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              className="md:hidden p-2 bg-white/5 backdrop-blur-sm dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors duration-200 rounded-md
+              "
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle mobile menu"
             >
@@ -195,7 +192,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white/95 backdrop-blur-md dark:bg-zinc-900/95"
+            className="md:hidden    backdrop-blur-3xl bg-transparent "
           >
             <nav className="px-4 py-4">
               <ul className="space-y-2">
