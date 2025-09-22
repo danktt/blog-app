@@ -3,7 +3,7 @@
 import { TextHoverEffect } from '@/components/ui/text-hover-effect';
 
 export default function Experience() {
-  const experienceData = [
+  const _experienceData = [
     {
       id: 0,
       company: 'Cyber Energia',

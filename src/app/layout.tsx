@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-
+import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Navbar } from '@/components/ui/navbar';
 
@@ -30,6 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <Analytics />
           <main className="relative z-10 pt-24 pb-8">
             <div className="mx-auto w-full max-w-7xl px-6">{children}</div>
           </main>

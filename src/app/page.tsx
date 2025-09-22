@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   IconArrowUpRight,
+  IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandX,
@@ -25,6 +26,12 @@ export default function Home() {
       external: true,
     },
     {
+      icon: <IconBrandGithub />,
+      label: 'danktt',
+      href: 'https://github.com/danktt',
+      external: true,
+    },
+    {
       icon: <IconBrandLinkedin />,
       label: 'danilo-miranda15',
       href: 'https://www.linkedin.com/in/danilo-miranda15',
@@ -40,7 +47,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative mt-20 flex w-full items-center justify-center overflow-hidden antialiased">
+    <div className="relative mt-12 flex w-full items-center justify-center overflow-hidden antialiased">
       <div className="mx-auto w-full lg:px-8">
         <div className="relative px-4 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl lg:max-w-5xl">
@@ -123,7 +130,7 @@ export default function Home() {
                     Connect with me
                   </h3>
                   <ul className="space-y-3">
-                    {socialLinks.map((link, idx) => (
+                    {socialLinks.map((link) => (
                       <li key={link.label}>
                         {link.external ? (
                           <Link

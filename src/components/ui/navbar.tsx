@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import { Tabs, Tab } from '@heroui/react';
 const TABS = [
   { label: 'Home', href: '/' },
   { label: 'Experience', href: '/experience' },
@@ -16,13 +14,11 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const { setTheme, theme } = useTheme();
   const activeTabRef = useRef<HTMLLIElement>(null);
   const [indicatorStyle, setIndicatorStyle] = useState({});
 
   useEffect(() => {
     const updateIndicator = () => {
-      const activeTab = TABS.find((tab) => tab.href === pathname);
       const activeTabElement = activeTabRef.current;
 
       if (activeTabElement) {
@@ -82,14 +78,55 @@ export function Navbar() {
             </Link>
           </motion.div>
 
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 md:hidden dark:text-zinc-400 dark:hover:bg-zinc-800"
+            aria-label="Toggle navigation menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+
           <nav className="hidden md:block">
             <div className="relative">
               <ul className="flex items-center space-x-1">
-                <Tabs aria-label="Tabs variants" variant="underline">
-                  {TABS.map((item) => (
-                    <Tab key={item.label} title={item.label} />
-                  ))}
-                </Tabs>
+                {TABS.map((item) => (
+                  <li
+                    key={item.label}
+                    ref={pathname === item.href ? activeTabRef : null}
+                  >
+                    <button
+                      onClick={() => handleNavigation(item.href)}
+                      className={`rounded-md px-4 py-2 font-medium text-sm transition-colors duration-200 ${pathname === item.href
+                          ? 'text-orange-600 dark:text-orange-400'
+                          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100'
+                        }`}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
               </ul>
 
               <motion.div
@@ -123,11 +160,10 @@ export function Navbar() {
                   <li key={item.label}>
                     <button
                       onClick={() => handleNavigation(item.href)}
-                      className={`w-full rounded-md px-3 py-2 text-left font-medium text-sm transition-colors duration-200 ${
-                        pathname === item.href
+                      className={`w-full rounded-md px-3 py-2 text-left font-medium text-sm transition-colors duration-200 ${pathname === item.href
                           ? 'bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400'
                           : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-100'
-                      }`}
+                        }`}
                     >
                       {item.label}
                     </button>
