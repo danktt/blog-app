@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { Link2, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -38,9 +38,9 @@ export default function Home() {
       isEmail: true,
     },
   ];
-    
+
   return (
-    <div className="relative w-full overflow-hidden antialiased flex justify-center items-center mt-20">
+    <div className="relative mt-20 flex w-full items-center justify-center overflow-hidden antialiased">
       <div className="mx-auto w-full lg:px-8">
         <div className="relative px-4 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl lg:max-w-5xl">
@@ -52,8 +52,8 @@ export default function Home() {
                 className="flex justify-center lg:justify-start lg:pl-20"
               >
                 <div className="max-w-xs lg:max-w-none">
-                  <div className="relative group">
-                    <div className="absolute inset-0 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                  <div className="group relative">
+                    <div className="absolute inset-0 rounded-2xl opacity-30 blur-xl transition-opacity duration-300 group-hover:opacity-50" />
                     <Image
                       src="/profile.jpg"
                       alt="Danilo Miranda"
@@ -65,7 +65,7 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Conteúdo principal */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -73,7 +73,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="lg:order-first lg:row-span-2"
               >
-                <h1 className="font-bold text-4xl tracking-tight sm:text-5xl mb-6  text-white">
+                <h1 className="mb-6 font-bold text-4xl text-white tracking-tight sm:text-5xl">
                   I'm Danilo Miranda
                 </h1>
                 <div className="space-y-6 text-base text-gray-300">
@@ -111,43 +111,46 @@ export default function Home() {
                   </p>
                 </div>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="lg:pl-20"
               >
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 ">
-                  <h3 className="text-lg font-semibold text-white mb-4">Connect with me</h3>
+                <div className="rounded-2xl bg-white/5 p-6 backdrop-blur-sm ">
+                  <h3 className="mb-4 font-semibold text-lg text-white">
+                    Connect with me
+                  </h3>
                   <ul className="space-y-3">
                     {socialLinks.map((link, idx) => (
                       <li key={link.label}>
                         {link.external ? (
                           <Link
-                            className="group flex items-center justify-between gap-3 font-medium text-sm text-gray-300 transition hover:text-white hover:bg-white/5 rounded-lg p-2 -m-2"
+                            className="group -m-2 flex items-center justify-between gap-3 rounded-lg p-2 font-medium text-gray-300 text-sm transition hover:bg-white/5 hover:text-white"
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <div className='flex items-center gap-2'>
-                              <span className="text-orange-600 group-hover:text-orange-500 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <span className="text-orange-600 transition-colors group-hover:text-orange-500">
                                 {link.icon}
                               </span>
                               <span>{link.label}</span>
                             </div>
-                            <div
-                              className=' duration-400 opacity-0 group-hover:opacity-100'
-                            >
-                              <IconArrowUpRight stroke={1.5} className='w-4 h-4 text-orange-500' />
+                            <div className=" opacity-0 duration-400 group-hover:opacity-100">
+                              <IconArrowUpRight
+                                stroke={1.5}
+                                className="h-4 w-4 text-orange-500"
+                              />
                             </div>
                           </Link>
                         ) : (
                           <Link
-                            className="group flex items-center gap-3 font-medium text-sm text-gray-300 transition hover:text-white hover:bg-white/5 rounded-lg p-2 -m-2"
+                            className="group -m-2 flex items-center gap-3 rounded-lg p-2 font-medium text-gray-300 text-sm transition hover:bg-white/5 hover:text-white"
                             href={link.href}
                           >
-                            <span className="text-orange-600 group-hover:text-orange-500 transition-colors">
+                            <span className="text-orange-600 transition-colors group-hover:text-orange-500">
                               {link.icon}
                             </span>
                             <span>{link.label}</span>
